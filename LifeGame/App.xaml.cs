@@ -11,7 +11,8 @@ namespace LifeGame
         {
             InitializeComponent();
 
-            MainPage = new MainPage();
+            //初期画面を設定している
+            MainPage = new MyPage();//MainPage();
         }
 
         protected override void OnStart()

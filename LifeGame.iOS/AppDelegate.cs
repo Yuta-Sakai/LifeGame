@@ -5,6 +5,7 @@ using System.Linq;
 using Foundation;
 using UIKit;
 
+//これがiosのエントリーポイント
 namespace LifeGame.iOS
 {
     // The UIApplicationDelegate for the application. This class is responsible for launching the 
