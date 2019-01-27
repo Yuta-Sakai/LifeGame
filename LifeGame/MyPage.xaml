@@ -4,9 +4,9 @@
              x:Class="LifeGame.MyPage">
     <StackLayout Padding="0,20,0,0">
         <StackLayout.Children>
+            <Grid x:Name="CellGrid" />
             <Label x:Name="labelHelloWorld"  Text="hello, world" />
             <Button Text="click me" Clicked="OnClicked" />
-            <Grid x:Name="CellGrid" />
         </StackLayout.Children>
     </StackLayout>
 </ContentPage>

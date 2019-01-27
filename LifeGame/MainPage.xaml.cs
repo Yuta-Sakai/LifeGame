@@ -3,6 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+
+using LifeGame.Model;
+
 using Xamarin.Forms;
 
 namespace LifeGame
@@ -12,6 +15,7 @@ namespace LifeGame
         public MainPage()
         {
             InitializeComponent();
+
         }
     }
 }
