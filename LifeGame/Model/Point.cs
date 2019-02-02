@@ -39,11 +39,15 @@ namespace LifeGame.Model
             Action<int, int> addlist = 
                                 (column, row) => list.Add(this.GetOffset(column, row));
 
+
             for(var c = -1; c <= 1; c++)
             {
                 for(var r = -1; r <= 1; r++)
                 {
-                    addlist(c, r);
+                    if(!(c == 0 && r == 0))
+                    {
+                        addlist(c, r);
+                    }
                 }
             }
 

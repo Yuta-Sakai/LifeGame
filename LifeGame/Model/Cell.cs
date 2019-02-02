@@ -35,21 +35,34 @@ namespace LifeGame.Model
 
         public Boolean IsAlive => this.status.IsAlive;
 
+
+
+
         public void SetNextIsAliveOrDead(int alives)
         {
             switch (alives)
             {
                 case 1:
-                    this.status.ToDead();
+                    this.status.NextIsDead();
                     break;
 
                 case 2:
+                    if (this.IsAlive)
+                    {
+                        this.status.NextIsAlive();
+                    }
+                    else
+                    {
+                        this.status.NextIsDead();
+                    };
+                    break;
+
                 case 3:
-                    this.status.ToAlive();
+                    this.status.NextIsAlive();
                     break;
 
                 default:
-                    this.status.ToDead();
+                    this.status.NextIsDead();
                     break;
             }
         }
@@ -92,6 +105,9 @@ namespace LifeGame.Model
         {
             this.subscriberChangeToAlive.Add(action);
         }
+
+
+
 
         public void NotifyChangeToAlive()
         {

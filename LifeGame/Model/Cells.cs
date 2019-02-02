@@ -45,11 +45,21 @@ namespace LifeGame.Model
 
         private void SetNextIsAliveOrDead()
         {
+            var pointComparer = new PointComparer();
+
             foreach(Cell cell in this.cells)
             {
+                //var neighbor = cell.Point.GetNeighborhood()
+                //                          .Select(p => this.GetCell(p))
+                //                        .Where(c => c != null);
+
+                //var alives = neighbor.Where(c => c.IsAlive).Count();
+
+
                 var neighbor = cell.Point.GetNeighborhood();
-                var alives = 
-                        this.cells.Where(c => neighbor.Contains(c.Point) && c.IsAlive).Count();
+
+                var alives = this.cells
+                                .Where(c => neighbor.Contains(c.Point, pointComparer) && c.IsAlive).Count();
 
                 cell.SetNextIsAliveOrDead(alives);
             }

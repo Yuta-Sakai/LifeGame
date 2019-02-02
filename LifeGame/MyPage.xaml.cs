@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Threading;
+using System.Threading.Tasks;
 
 using Xamarin.Forms;
 
@@ -10,11 +12,14 @@ namespace LifeGame
     public partial class MyPage : ContentPage
     {
         private Cells cells;
-
+        private bool isStop;
+        private bool isStarted;
 
         public MyPage()
         {
             InitializeComponent();
+
+            this.isStarted = false;
 
 
             this.cells = new Cells();
@@ -43,6 +48,7 @@ namespace LifeGame
                 for(var row = 0; row <= cells.MaxRow; row++)
                 {
                     var label = new Label();
+
                     label.BackgroundColor = Color.LightGray;
 
                     var point = new LifeGame.Model.Point(column, row);
@@ -58,6 +64,16 @@ namespace LifeGame
                     label.BackgroundColor = Color.LightGray;
                     cell.ToDead();
 
+                    var tgr = new TapGestureRecognizer();
+                    tgr.Tapped += (sendr, e) =>
+                    {
+                        this.isStop = true;
+                        this.isStarted = false;
+                        cell.ChangeStatus();
+                    };
+
+                    label.GestureRecognizers.Add(tgr);
+
                     this.CellGrid.Children.Add(label, column, row);
                 }
             }
@@ -70,20 +86,30 @@ namespace LifeGame
 
 
 
-        private void Run()
+        private async void OnStartClicked(object sender , EventArgs args)
         {
-            while (true)
+            if (this.isStarted) return;
+
+            this.isStop = false;
+            this.isStarted = true;
+
+            await Task.Run( () =>
             {
-                this.cells.Next();
-            }
+                while (!isStop)
+                {
+                    this.cells.Next();
+                    Thread.Sleep(500);
+                }
+            });
         }
 
 
 
-
-        private void OnClicked(object sender, EventArgs args)
+        private void OnStopClicked(object sender, EventArgs args)
         {
-            this.labelHelloWorld.Text = "こんにちは、世界";
+            this.isStarted = false;
+            this.isStop = true;
+
         }
     }
 }

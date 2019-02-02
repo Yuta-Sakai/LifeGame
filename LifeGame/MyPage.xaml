@@ -5,8 +5,8 @@
     <StackLayout Padding="0,20,0,0">
         <StackLayout.Children>
             <Grid x:Name="CellGrid" />
-            <Label x:Name="labelHelloWorld"  Text="hello, world" />
-            <Button Text="click me" Clicked="OnClicked" />
+            <Button Text="Start" Clicked="OnStartClicked" />
+            <Button Text="Stop" Clicked="OnStopClicked" />
         </StackLayout.Children>
     </StackLayout>
 </ContentPage>
