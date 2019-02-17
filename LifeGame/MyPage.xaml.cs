@@ -25,17 +25,16 @@ namespace LifeGame
             this.cells = new Cells();
 
             var rowCollections = new RowDefinitionCollection();
-            for (var i = 0; i < 10; i++)
+            for (var row = 0; row < cells.MaxRow(); row++)
             {
                 rowCollections.Add(new RowDefinition { Height = 20 });
-
             }
 
             this.CellGrid.RowDefinitions = rowCollections;
 
 
             var columnCollections = new ColumnDefinitionCollection();
-            for (var i = 0; i <10; i++)
+            for (var columun = 0; columun < cells.MaxColumn(); columun++)
             {
                 columnCollections.Add(new ColumnDefinition { Width = 20 });
             }
@@ -43,9 +42,9 @@ namespace LifeGame
             this.CellGrid.ColumnDefinitions = columnCollections;
 
 
-            for(var column = 0; column <= cells.MaxColumn ; column++)
+            for(var column = 0; column < cells.MaxColumn() ; column++)
             {
-                for(var row = 0; row <= cells.MaxRow; row++)
+                for(var row = 0; row < cells.MaxRow(); row++)
                 {
                     var label = new Label();
 
@@ -78,6 +77,8 @@ namespace LifeGame
                 }
             }
 
+
+            ///bttonGrid
 
             ////列、行
             //this.CellGrid.Children.Add(new Label { Text = "po0" }, 0, 0);

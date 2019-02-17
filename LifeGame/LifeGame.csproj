@@ -17,5 +17,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Remove="LabelAndCell.cs" />
+    <Compile Remove="Model\CellsController.cs" />
   </ItemGroup>
 </Project>

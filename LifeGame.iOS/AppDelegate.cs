@@ -3,9 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 
 using Foundation;
+using ObjCRuntime;
 using UIKit;
 
-//これがiosのエントリーポイント
+//Entry Point
 namespace LifeGame.iOS
 {
     // The UIApplicationDelegate for the application. This class is responsible for launching the 
@@ -27,6 +28,13 @@ namespace LifeGame.iOS
             LoadApplication(new App());
 
             return base.FinishedLaunching(app, options);
+        }
+
+
+
+        public override UIInterfaceOrientationMask GetSupportedInterfaceOrientations(UIApplication application, [Transient] UIWindow forWindow)
+        {
+            return UIInterfaceOrientationMask.Portrait;
         }
     }
 }

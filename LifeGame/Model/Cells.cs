@@ -7,25 +7,37 @@ namespace LifeGame.Model
     public class Cells
     {
         private List<Cell> cells = new List<Cell>();
-        private const int Max_Column = 9;
-        private const int Max_Row = 9;
+        private int maxColumn;
+        private int maxRow;
+
 
         public Cells()
         {
+            var setting = Settings.GetInstance();
+            this.maxColumn = setting.MaxColumun();
+            this.maxRow = setting.MaxRow();
+
             this.Make();
         }
 
 
-        public int MaxColumn => Max_Column;
+        public int MaxColumn()
+        {
+            return maxColumn;
+        }
 
-        public int MaxRow => Max_Row; 
+
+        public int MaxRow()
+        {
+            return this.maxRow;
+        }
 
 
         private void Make()
         {
-            for(var column = 0; column <= Max_Column; column++)
+            for(var column = 0; column < maxColumn; column++)
             {
-                for(var row = 0; row <= Max_Row; row++)
+                for(var row = 0; row < maxRow; row++)
                 {
                     var point = new Point(column, row);
                     cells.Add(new Cell(point));
@@ -49,13 +61,6 @@ namespace LifeGame.Model
 
             foreach(Cell cell in this.cells)
             {
-                //var neighbor = cell.Point.GetNeighborhood()
-                //                          .Select(p => this.GetCell(p))
-                //                        .Where(c => c != null);
-
-                //var alives = neighbor.Where(c => c.IsAlive).Count();
-
-
                 var neighbor = cell.Point.GetNeighborhood();
 
                 var alives = this.cells

@@ -4,9 +4,16 @@
              x:Class="LifeGame.MyPage">
     <StackLayout Padding="0,20,0,0">
         <StackLayout.Children>
-            <Grid x:Name="CellGrid" />
-            <Button Text="Start" Clicked="OnStartClicked" />
-            <Button Text="Stop" Clicked="OnStopClicked" />
+            <Grid x:Name="CellGrid" VerticalOptions="Center" HorizontalOptions="Center"  RowSpacing="1" ColumnSpacing="1"/>
+                
+            <Grid x:Name="ControlGrid">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+                <Button Grid.Column="0" BackgroundColor="Lime" TextColor="Black" Text="Start" Clicked="OnStartClicked" />
+                <Button Grid.Column="1" BackgroundColor="Lime" TextColor="Black" Text="Stop" Clicked="OnStopClicked" />
+            </Grid>
         </StackLayout.Children>
     </StackLayout>
 </ContentPage>
