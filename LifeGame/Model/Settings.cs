@@ -11,8 +11,13 @@ namespace LifeGame.Model
 
 
         public static Settings GetInstance()
-        {
-            return  myself ?? new Settings();
+        {               
+            if(myself == null)
+            {
+                myself = new Settings();
+            }
+
+            return myself;
         }
 
 

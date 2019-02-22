@@ -6,13 +6,40 @@ namespace LifeGame.Model
 {
     public class Point
     {
+        private Settings settings;
+
         private int row;
         private int column;
+        private int maxRow;
+        private int maxColumn;
 
         public Point(int column, int row)
         {
-            this.row = row;
-            this.column = column;
+            this.settings = Settings.GetInstance();
+
+            this.maxRow = settings.MaxRow();
+            this.maxColumn = settings.MaxColumun();
+
+            Func<int, int, int> validate = (value, max) =>
+            {
+                int validated = value;
+
+                if (value < 0 )
+                {
+                    validated = max + value;
+                }
+
+                if(value >= max)
+                {
+                    validated = value - max;
+                }
+
+                return validated;
+            };
+
+
+            this.row = validate(row, this.maxRow);
+            this.column = validate(column, this.maxColumn);
         }
 
         public int Row => this.row;
@@ -25,9 +52,14 @@ namespace LifeGame.Model
         }
 
 
-        private Point GetOffset(int column, int row)
+
+
+        private Point Offset(int column, int row)
         {
-            return new Point(this.column + column, this.row + row);
+            var offsetColumn = this.column + column;
+            var offsetRow = this.row + row;
+
+            return new Point(offsetColumn, offsetRow);
         }
 
 
@@ -37,7 +69,7 @@ namespace LifeGame.Model
             var list = new List<Point>();
 
             Action<int, int> addlist = 
-                                (column, row) => list.Add(this.GetOffset(column, row));
+                                (column, row) => list.Add(this.Offset(column, row));
 
 
             for(var c = -1; c <= 1; c++)
