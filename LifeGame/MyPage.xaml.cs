@@ -112,5 +112,14 @@ namespace LifeGame
             this.isStop = true;
 
         }
+
+
+        private void OnResetClicked(object sender, EventArgs args)
+        {
+            this.isStarted = false;
+            this.isStop = true;
+
+            this.cells.Reset();
+        }    
     }
 }

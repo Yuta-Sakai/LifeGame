@@ -27,14 +27,26 @@ namespace LifeGame.iOS
             global::Xamarin.Forms.Forms.Init();
             LoadApplication(new App());
 
+            UIApplication.SharedApplication.IdleTimerDisabled = false;
+
             return base.FinishedLaunching(app, options);
         }
-
 
 
         public override UIInterfaceOrientationMask GetSupportedInterfaceOrientations(UIApplication application, [Transient] UIWindow forWindow)
         {
             return UIInterfaceOrientationMask.Portrait;
+
         }
+
+
+        public override void WillTerminate(UIApplication uiApplication)
+        {
+            UIApplication.SharedApplication.IdleTimerDisabled = true;
+
+
+            base.WillTerminate(uiApplication);
+        }
+
     }
 }

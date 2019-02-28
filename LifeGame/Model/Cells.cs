@@ -78,5 +78,11 @@ namespace LifeGame.Model
             this.cells.ForEach(cell => cell.Next());
         }
 
+
+
+        public void Reset()
+        {
+            this.cells.ForEach(cell => cell.ToDead());
+        }
     }
 }

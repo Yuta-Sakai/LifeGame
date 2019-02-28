@@ -10,9 +10,11 @@
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="*" />
                     <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
                 </Grid.ColumnDefinitions>
                 <Button Grid.Column="0" BackgroundColor="Lime" TextColor="Black" Text="Start" Clicked="OnStartClicked" />
                 <Button Grid.Column="1" BackgroundColor="Lime" TextColor="Black" Text="Stop" Clicked="OnStopClicked" />
+                <Button Grid.Column="2" BackgroundColor="Lime" TextColor="Black" Text="Reset" Clicked="OnResetClicked" />
             </Grid>
         </StackLayout.Children>
     </StackLayout>
