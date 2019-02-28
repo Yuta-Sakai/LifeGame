@@ -27,7 +27,7 @@ namespace LifeGame.iOS
             global::Xamarin.Forms.Forms.Init();
             LoadApplication(new App());
 
-            UIApplication.SharedApplication.IdleTimerDisabled = false;
+            UIApplication.SharedApplication.IdleTimerDisabled = true;
 
             return base.FinishedLaunching(app, options);
         }
@@ -42,7 +42,7 @@ namespace LifeGame.iOS
 
         public override void WillTerminate(UIApplication uiApplication)
         {
-            UIApplication.SharedApplication.IdleTimerDisabled = true;
+            UIApplication.SharedApplication.IdleTimerDisabled = false;
 
 
             base.WillTerminate(uiApplication);
